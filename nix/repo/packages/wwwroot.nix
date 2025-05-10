@@ -2,8 +2,10 @@
   self,
   stdenv,
   python_with_sphinx,
+  coreutils,
+  drawio-headless,
   makeWrapper,
-  coreutils
+  xvfb,
 }:
 
 stdenv.mkDerivation {
@@ -23,8 +25,10 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     makeWrapper
+    drawio-headless
     python_with_sphinx
     coreutils
+    xvfb
   ];
   makeFlags = [ "html" ];
 
@@ -32,4 +36,5 @@ stdenv.mkDerivation {
     mkdir -p $out
     cp -r _build/html/* $out/
   '';
+
 }

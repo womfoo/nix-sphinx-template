@@ -21,6 +21,7 @@
     std.growOn
       {
         inherit inputs;
+        nixpkgsConfig.allowUnfree = true;
         cellsFrom = ./nix;
         cellBlocks = with std.blockTypes; [
           (devshells "shells")

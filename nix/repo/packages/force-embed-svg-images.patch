@@ -1,0 +1,14 @@
+diff --git a/sphinxcontrib/drawio/__init__.py b/sphinxcontrib/drawio/__init__.py
+index 3ba88e7..a55f775 100644
+--- a/sphinxcontrib/drawio/__init__.py
++++ b/sphinxcontrib/drawio/__init__.py
+@@ -295,7 +295,8 @@ class DrawIOConverter(ImageConverter):
+             # This is fixed now, but is left in for backwards compat.
+             scale_args.clear()
+ 
+-        extra_args = []
++        # FIXME: hack to embed cloud images
++        extra_args = [ "--embed-svg-images" ]
+         for option, drawio_arg in OPTIONAL_UNIQUES.items():
+             if option in options:
+                 value = options[option]
