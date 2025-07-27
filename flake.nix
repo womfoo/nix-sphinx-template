@@ -6,7 +6,7 @@
     nixago.inputs.nixago-exts.follows = "";
     nixago.inputs.nixpkgs.follows = "nixpkgs";
     nixago.url = "github:nix-community/nixago";
-    nixpkgs.url = "github:NixOS/nixpkgs/8bb3716";
+    nixpkgs.url = "github:NixOS/nixpkgs/7fd36ee";
     std.inputs.devshell.follows = "devshell";
     std.inputs.nixago.follows = "nixago";
     std.inputs.nixpkgs.follows = "nixpkgs";

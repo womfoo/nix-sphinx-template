@@ -3,14 +3,45 @@
   cell,
 }:
 let
-  inherit (inputs) nixpkgs;
-  inherit (inputs.std.data) configs;
-  inherit (inputs.std.lib.dev) mkNixago;
+  inherit (inputs.nixpkgs)
+    black
+    lib
+    nixfmt-rfc-style
+    treefmt
+    nodePackages
+    ;
 in
 {
-  treefmt = (mkNixago configs.treefmt) {
+  treefmt = {
+    output = "treefmt.toml";
+    format = "toml";
+    commands = [
+      { package = treefmt; }
+      { package = nixfmt-rfc-style; }
+      { package = nodePackages.prettier; }
+    ];
     data.formatter.nix = {
-      command = nixpkgs.lib.getExe nixpkgs.nixfmt-rfc-style;
+      command = lib.getExe nixfmt-rfc-style;
+      includes = [ "*.nix" ];
+    };
+    data.formatter.py = {
+      command = "${black}/bin/black";
+      includes = [ "*.py" ];
+    };
+    data.formatter.prettier = {
+      command = lib.getExe nodePackages.prettier;
+      includes = [
+        "*.css"
+        "*.html"
+        "*.js"
+        "*.json"
+        "*.jsx"
+        "*.md"
+        "*.mdx"
+        "*.scss"
+        "*.ts"
+        "*.yaml"
+      ];
     };
   };
 }

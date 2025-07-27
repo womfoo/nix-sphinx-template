@@ -2,12 +2,17 @@
   fetchPypi,
   fetchFromGitHub,
   python3Packages,
-  strace,
 }:
 
 python3Packages.buildPythonPackage rec {
   pname = "sphinxcontrib-drawio";
   version = "0.0.17";
+
+  dependencies = [
+    python3Packages.sphinx
+  ];
+
+  build-system = [ python3Packages.setuptools ];
 
   src = fetchFromGitHub {
     owner = "modelmat";
@@ -19,5 +24,7 @@ python3Packages.buildPythonPackage rec {
   patches = [
     ./force-embed-svg-images.patch
   ];
+
+  pyproject = true;
   pythonNamespaces = [ "sphinxcontrib" ];
 }

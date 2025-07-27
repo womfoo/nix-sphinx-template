@@ -3,7 +3,7 @@
   cell,
 }:
 let
-  inherit (inputs.std.lib) dev cfg;
+  inherit (inputs.std.lib.dev) mkNixago;
 in
 {
   default = inputs.std.lib.dev.mkShell {
@@ -16,9 +16,10 @@ in
         category = "compatibility";
       }
     ];
-
     nixago = [
-      cell.configs.treefmt
+      (mkNixago cell.configs.treefmt)
+      (mkNixago inputs.std.data.configs.conform)
+      (mkNixago inputs.std.data.configs.lefthook)
     ];
   };
 }
