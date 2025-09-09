@@ -10,6 +10,7 @@ in
     commands = with inputs.nixpkgs.pkgs; [
       { package = mermaid-cli; } # this brings in chromium-unwrapped ~700MB
       { package = cell.packages.python_with_sphinx; }
+      { package = cell.packages.impure-sphinx-build; }
       {
         # for building in devshell
         package = gnumake;

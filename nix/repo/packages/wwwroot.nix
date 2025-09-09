@@ -12,7 +12,6 @@ stdenv.mkDerivation {
   name = "wwwroot";
   src = self + /docs;
 
-  # SOURCE_DATE_EPOCH = "315532800";
   /*
     FIXME: make epub work; none of ff work
     SOURCE_DATE_EPOCH = "315532800";

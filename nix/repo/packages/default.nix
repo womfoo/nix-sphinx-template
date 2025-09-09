@@ -5,25 +5,31 @@
 let
   inherit (inputs.nixpkgs)
     lib
-    # buildGoModule
     callPackage
-    # fetchfromGithub
     python3
     ensureNewerSourcesForZipFilesHook
-    # python3Packages
-    # fetchPypi
     ensureNewerSourcesHook
     coreutils
     drawio-headless
     xvfb
     ;
-
+  inherit (inputs.std.lib.ops) writeScript;
 in
 rec {
   default = wwwroot;
+  impure-sphinx-build = writeScript {
+    name = "impure-sphinx-build";
+    runtimeInputs = [
+      python_with_sphinx
+    ];
+    text = ''
+      sphinx-autobuild "''${PRJ_ROOT}/docs/" "''${PRJ_ROOT}/docs/_build/" "''$@"
+    '';
+  };
+
   wwwroot = callPackage ./wwwroot.nix {
     inherit (inputs) self;
-    python_with_sphinx = python_with_sphinx;
+    inherit python_with_sphinx;
   };
   sphinxcontrib-drawio = callPackage ./sphinxcontrib-drawio.nix { };
   sphinxcontrib-mermaid = callPackage ./sphinxcontrib-mermaid.nix { };
@@ -33,6 +39,7 @@ rec {
       sphinxcontrib-drawio
       py3pkgs.myst-parser
       py3pkgs.sphinx
+      py3pkgs.sphinx-autobuild
       py3pkgs.sphinx_rtd_theme
     ]))
     // {
