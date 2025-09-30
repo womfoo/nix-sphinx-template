@@ -25,14 +25,19 @@
         cellsFrom = ./nix;
         cellBlocks = with std.blockTypes; [
           (devshells "shells")
-          (nixago "configs")
+          (functions "nixosModules")
           (installables "packages")
+          (nixago "configs")
         ];
       }
       {
         devShells = inputs.std.harvest inputs.self [
           "repo"
           "shells"
+        ];
+        nixosModules = inputs.std.harvest inputs.self [
+          "repo"
+          "nixosModules"
         ];
         packages = std.harvest self [
           "repo"
