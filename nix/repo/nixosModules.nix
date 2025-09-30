@@ -11,7 +11,7 @@
       ...
     }:
     let
-      inherit (lib) mkOption types mkIf;
+      inherit (lib) mkIf mkOption types;
     in
     {
       options = {
@@ -25,6 +25,7 @@
           };
           virtualHost = mkOption {
             type = types.str;
+            default = "localhost";
           };
         };
       };
@@ -33,7 +34,7 @@
           cfg = config.services.sphinx-nginx;
         in
         mkIf cfg.enable {
-          services.nginx.virtualHosts."localca" = {
+          services.nginx.virtualHosts."${cfg.virtualHost}" = {
             locations = {
               "/" = {
                 root = inputs.cells.repo.packages.wwwroot;

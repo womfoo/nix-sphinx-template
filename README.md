@@ -26,5 +26,7 @@ or live updates with uncommited git changes:
      ``
        modules = [
           inputs.sphinx.nixosModules.default
+          {services.sphinx-nginx.enable = true;}
+          {services.sphinx-nginx.virtualHost = "your.doc.site.com";}
        ];
      ``
