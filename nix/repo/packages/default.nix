@@ -40,7 +40,7 @@ rec {
       py3pkgs.myst-parser
       py3pkgs.sphinx
       py3pkgs.sphinx-autobuild
-      py3pkgs.sphinx_rtd_theme
+      py3pkgs.sphinx-rtd-theme
     ]))
     // {
       meta.description = "python with sphinx-{build,quickstart,etc.}";

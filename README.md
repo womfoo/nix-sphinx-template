@@ -1,10 +1,10 @@
 # nix-sphinx-template
 
 Nix [Sphinx](https://www.sphinx-doc.org/) template with:
-- [sphinx-rtd-theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/)
 - [myst-parser](https://myst-parser.readthedocs.io/en/latest/)
-- [sphinxcontrib-mermaid](https://github.com/mgaitan/sphinxcontrib-mermaid/)
+- [sphinx-rtd-theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/)
 - [sphinxcontrib-drawio](https://github.com/modelmat/sphinxcontrib-drawio/)
+- [sphinxcontrib-mermaid](https://github.com/mgaitan/sphinxcontrib-mermaid/)
 
 ## Quickstart
 1. `nix build`
@@ -18,15 +18,17 @@ or live updates with uncommited git changes:
 ## NixOS Flake
 
 1. `flake.nix`
-     ``
+
+     ```nix
        inputs = {
          sphinx.url = "github:womfoo/nix-sphinx-template";
        }
-     ``
-     ``
+     ```
+
+     ```nix
        modules = [
           inputs.sphinx.nixosModules.default
           {services.sphinx-nginx.enable = true;}
           {services.sphinx-nginx.virtualHost = "your.doc.site.com";}
        ];
-     ``
+     ```
