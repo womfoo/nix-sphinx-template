@@ -1,5 +1,4 @@
 {
-  fetchPypi,
   fetchFromGitHub,
   python3Packages,
 }:
