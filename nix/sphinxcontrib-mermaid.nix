@@ -5,20 +5,21 @@
 
 python3Packages.buildPythonPackage rec {
   pname = "sphinxcontrib-mermaid";
-  version = "1.0.0";
+  version = "2.1.1";
 
   dependencies = [
+    python3Packages.jinja2
     python3Packages.pyyaml
     python3Packages.sphinx
   ];
 
-  build-system = [ python3Packages.setuptools ];
+  build-system = [ python3Packages.hatchling ];
 
   src = fetchFromGitHub {
     owner = "mgaitan";
     repo = pname;
     tag = version;
-    hash = "sha256-OO2fbtB2qLjsIGjRJrBDDRn8dT9qowfU6i8qRBbDRTM=";
+    hash = "sha256-lRPZDfFjrA4xCAOa/GzZVyTRPaTcyFWUSVyombPvIMk=";
   };
 
   pyproject = true;

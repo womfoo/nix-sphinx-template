@@ -2,8 +2,7 @@
 
 Nix [Sphinx](https://www.sphinx-doc.org/) template with:
 - [myst-parser](https://myst-parser.readthedocs.io/en/latest/)
-- [sphinx-rtd-theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/)
-- [sphinxcontrib-drawio](https://github.com/modelmat/sphinxcontrib-drawio/)
+- [pydata-sphinx-theme](https://pydata-sphinx-theme.readthedocs.io/en/stable/)
 - [sphinxcontrib-mermaid](https://github.com/mgaitan/sphinxcontrib-mermaid/)
 
 ## Quickstart
